@@ -18,13 +18,13 @@ def get_aruco_dict(dict_key: str) -> int:
     :rtype: int
     """
     if dict_key == "DICT_4X4":
-        return cv2.aruco.Dictionary_get(cv2.aruco.DICT_4X4_50)
+        return cv2.aruco.getPredefinedDictionary(cv2.aruco.DICT_4X4_50)
     elif dict_key == "DICT_5X5":
-        return cv2.aruco.Dictionary_get(cv2.aruco.DICT_5X5_250)
+        return cv2.aruco.getPredefinedDictionary(cv2.aruco.DICT_5X5_250)
     elif dict_key == "DICT_6X6":
-        return cv2.aruco.Dictionary_get(cv2.aruco.DICT_6X6_1000)
+        return cv2.aruco.getPredefinedDictionary(cv2.aruco.DICT_6X6_1000)
     elif dict_key == "DICT_7X7":
-        return cv2.aruco.Dictionary_get(cv2.aruco.DICT_7X7_1000)
+        return cv2.aruco.getPredefinedDictionary(cv2.aruco.DICT_7X7_1000)
     else:
         raise IOError(
             f"Unknown ARUCO_DICT {dict_key}, \
@@ -53,9 +53,8 @@ def create_aruco_board(
     :return: target board descriptors
     :rtype: cv2.aruco.CharucoBoard instance, points_3d, ids
     """
-    board = cv2.aruco.CharucoBoard_create(
-        squaresX=cols,
-        squaresY=rows,
+    board = cv2.aruco.CharucoBoard(
+        (cols, rows),
         squareLength=square_size,
         markerLength=marker_size,
         dictionary=get_aruco_dict(dict_key))
