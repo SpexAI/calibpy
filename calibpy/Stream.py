@@ -55,7 +55,7 @@ class Stream:
 class FileStream(Stream):
     """Implementation of a Stream class that handles loading from file tasks.
     The initialize method can handle loading a single specific filename, a list
-    of filenames or loading files from a directory. See the doc strings of the 
+    of filenames or loading files from a directory. See the doc strings of the
     initialize method for more details.
     """
 
@@ -285,8 +285,8 @@ class FileStream(Stream):
 
     def next(self, *args, **kwargs) -> np.ndarray:
         """Function returns the next image from the streams buffer.
-        If the buffer is empty and is_looping is set to True, the buffer 
-        is automtaically resetted, otherwise None is returned. The buffer 
+        If the buffer is empty and is_looping is set to True, the buffer
+        is automtaically resetted, otherwise None is returned. The buffer
         can aslo be resetted manually using the method reset.
 
         :return: image

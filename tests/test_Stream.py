@@ -43,7 +43,8 @@ class TestStreamModule(unittest.TestCase):
         filenames = []
         for i in range(1, 25):
             filenames.append(
-                str(self._root / "single_cam" / "undistorted" / f"{i:04d}.png"))
+                str(self._root / "single_cam" / "undistorted" /
+                    f"{i:04d}.png"))
         fs = FileStream()
         fs.initialize(
             directory=str(self._root / "single_cam" / "undistorted"))
@@ -64,7 +65,8 @@ class TestStreamModule(unittest.TestCase):
         filenames = []
         for i in range(10, 20):
             filenames.append(
-                str(self._root / "single_cam" / "undistorted" / f"{i+1:04d}.png"))
+                str(self._root / "single_cam" / "undistorted" /
+                    f"{i+1:04d}.png"))
         fs = FileStream()
         fs.initialize(
             directory=str(self._root / "single_cam" / "undistorted"),

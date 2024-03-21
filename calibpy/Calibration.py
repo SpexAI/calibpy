@@ -123,8 +123,7 @@ class Calibration:
                 self._settings.square_size,
                 self._settings.marker_size)
 
-        self._criteria = (cv2.TERM_CRITERIA_EPS +
-                          cv2.TERM_CRITERIA_MAX_ITER,
+        self._criteria = (cv2.TERM_CRITERIA_EPS + cv2.TERM_CRITERIA_MAX_ITER,
                           self._settings.max_count,
                           self._settings.epsilon)
 
@@ -277,7 +276,8 @@ class Calibration:
             frame += 1
 
         if accepted_images < min_N:
-            print(f"Calibration Failed! Found {accepted_images}, less than {min_N} images")
+            print(f"Calibration Failed! Found {accepted_images},",
+                  f" less than {min_N} images")
             raise RuntimeError("Internal Calibration Failed")
         else:
             print(f"{accepted_images} valid captures")

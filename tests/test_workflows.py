@@ -1,6 +1,6 @@
 import yaml
 import unittest
-import numpy as np
+# import numpy as np
 from glob import glob
 from pathlib import Path
 from calibpy.Settings import Settings
