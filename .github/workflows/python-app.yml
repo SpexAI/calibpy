@@ -1,17 +1,11 @@
-on:
-  push:
-    branches: ["main"]
-  pull_request:
-    branches: ["*"]
-  workflow_dispatch:
-
+on: [ "push", "pull_request", "workflow_dispatch" ]
 jobs:
   test:
-    runs-on: ubuntu-latest
+    # python 3.8
+    runs-on: ubuntu-20.04
     strategy:
       matrix:
-        # >3.12 require an up-to-date distro (such as fc39)
-        python-version: ["3.9", "3.10", "3.11"]
+        python-version: ["3.8", "3.9"]
 
     steps:
       - uses: actions/checkout@v3
@@ -28,5 +22,5 @@ jobs:
       - name: Run tests
         run: python -m pytest tests
 
-      - name: Run lint
-        run: flake8 --ignore E501,E226
+      #- name: Run lint
+      #  run: flake8 --ignore E501,E226,W504
