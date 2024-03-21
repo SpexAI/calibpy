@@ -4,10 +4,11 @@
 :Sponsor: SpexAI GmbH
 """
 
+import numpy as np
+import open3d as o3d
+
 from calibpy.Calibration import Calibration
 from calibpy.Camera import Camera
-import open3d as o3d
-import numpy as np
 
 
 def project_3d_blender_conform(

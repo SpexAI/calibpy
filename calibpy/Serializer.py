@@ -4,11 +4,12 @@
 :Sponsor: SpexAI GmbH
 """
 import json
-import yaml
 import pickle
+from pathlib import Path
+
 # import tempfile
 import numpy as np
-from pathlib import Path
+import yaml
 
 
 class Serializer:
@@ -46,8 +47,8 @@ class Serializer:
 
         data = {}
         for key in self.__dict__.keys():
-            if not key.startswith('__') and not callable(key):
-                if key.startswith('_'):
+            if not key.startswith("__") and not callable(key):
+                if key.startswith("_"):
                     data[key[1:]] = self.__dict__[key]
         if filename is not None:
             self.write(filename, data)
@@ -113,7 +114,7 @@ class Serializer:
         """
         with filename.open(mode="wb") as f:
             pickle.dump(data, f)
-            print(f"File {str(filename)} saved")
+            print(f"File {filename!s} saved")
 
     def _write_yaml(self, filename: Path, data: dict):
         """Write .yaml file
@@ -126,7 +127,7 @@ class Serializer:
         with filename.open(mode="w") as f:
             data = Serializer._make_txt_dumpable(data)
             yaml.dump(data, f)
-            print(f"File {str(filename)} saved")
+            print(f"File {filename!s} saved")
 
     def _write_json(self, filename: Path, data: dict):
         """Write .json file
@@ -139,7 +140,7 @@ class Serializer:
         with filename.open(mode="w") as f:
             data = Serializer._make_txt_dumpable(data)
             json.dump(data, f)
-            print(f"File {str(filename)} saved")
+            print(f"File {filename!s} saved")
 
     def _load_npy(self, filename: Path):
         """Loads a .npy file and creates a class attribute

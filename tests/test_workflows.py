@@ -1,12 +1,15 @@
-import yaml
 import unittest
+
 # import numpy as np
 from glob import glob
 from pathlib import Path
-from calibpy.Settings import Settings
-from calibpy.Stream import FileStream
+
+import yaml
+
 from calibpy.Calibration import Calibration
 from calibpy.Registration import register_depthmap_to_world
+from calibpy.Settings import Settings
+from calibpy.Stream import FileStream
 
 
 class TestCameraModule(unittest.TestCase):
@@ -21,7 +24,7 @@ class TestCameraModule(unittest.TestCase):
             fnames.append(fname)
         fnames.sort()
         for fname in fnames:
-            with open(fname, "r") as file:
+            with open(fname) as file:
                 self._cam_gts.append(yaml.safe_load(file))
         self._test_data_filenames = []
 
@@ -182,5 +185,5 @@ class TestCameraModule(unittest.TestCase):
         self.assertTrue((maxb[2]-minb[2])-0.4866462015080666 < 0.1)
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     unittest.main()

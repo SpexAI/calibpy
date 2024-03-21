@@ -5,11 +5,12 @@
 """
 
 import os
-import bpy
 import pickle
-import numpy as np
 from glob import glob
 from pathlib import Path
+
+import bpy
+import numpy as np
 from mathutils import Matrix
 
 
@@ -24,13 +25,13 @@ def read_npys_from_dir(dirname: str) -> list:
 def load_camera_props_from_file(filename: str):
     assert isinstance(filename, str)
     assert Path(filename).exists()
-    with open(filename, 'rb') as file:
+    with open(filename, "rb") as file:
         return pickle.load(file)
     return None
 
 
 def find_latest_object_by_name(context, name):
-    bpy.ops.object.select_all(action='DESELECT')
+    bpy.ops.object.select_all(action="DESELECT")
     objs = [x for x in context.scene.objects.keys() if x.startswith(name)]
     objs.sort()
     if len(objs) <= 0:
@@ -61,20 +62,20 @@ def create_camera(context: object, props: dict):
 
     bpy.ops.object.camera_add(
         enter_editmode=False,
-        align='VIEW',
+        align="VIEW",
         location=(0, 0, 0),
         rotation=(0, 0, 0),
         scale=(1, 1, 1))
 
     cam = find_latest_object_by_name(context, "Camera")
     cam.name = cam_name
-    if 'sensor_size' in props and props['sensor_size'] is not None:
-        cam.data.sensor_height = props['sensor_size'][0]
-        cam.data.sensor_width = props['sensor_size'][1]
-    cam.data.lens_unit = 'MILLIMETERS'
-    if 'f_mm' in props and props["f_mm"] is not None:
-        cam.data.lens = props['f_mm']
-    cam.matrix_world = matrix_from_numpy(props['RTb'])
+    if "sensor_size" in props and props["sensor_size"] is not None:
+        cam.data.sensor_height = props["sensor_size"][0]
+        cam.data.sensor_width = props["sensor_size"][1]
+    cam.data.lens_unit = "MILLIMETERS"
+    if "f_mm" in props and props["f_mm"] is not None:
+        cam.data.lens = props["f_mm"]
+    cam.matrix_world = matrix_from_numpy(props["RTb"])
 
 
 if __name__ == "__main__":

@@ -1,6 +1,8 @@
 import unittest
-import numpy as np
 from pathlib import Path
+
+import numpy as np
+
 from calibpy.Camera import Camera
 
 
@@ -55,5 +57,5 @@ class TestCameraModule(unittest.TestCase):
         os.remove(dump_fname)
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     unittest.main()

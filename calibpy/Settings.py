@@ -4,8 +4,9 @@
 :Sponsor: SpexAI GmbH
 """
 
-import yaml
 from pathlib import Path
+
+import yaml
 
 
 class Settings:
@@ -28,8 +29,8 @@ class Settings:
         def get_dict(obj):
             out = {}
             for key in obj.__dict__.keys():
-                if not key.startswith('__') and not callable(key):
-                    if not key.startswith('_'):
+                if not key.startswith("__") and not callable(key):
+                    if not key.startswith("_"):
                         print(key, type(key))
                         out[key] = type(obj.__dict__[key])
             return out
@@ -47,7 +48,7 @@ class Settings:
     def _get_data(self):
         data = {}
         for key in self.__dict__.keys():
-            if not key.startswith('__') and not callable(key):
+            if not key.startswith("__") and not callable(key):
                 data[key] = self.__dict__[key]
         return data
 
@@ -88,12 +89,12 @@ class Settings:
         save_dir = Path(save_dir)
         if not save_dir.is_dir():
             Path.mkdir(save_dir)
-        if Path(filename).suffix != '':
+        if Path(filename).suffix != "":
             assert Path(filename).suffix == "yaml"
             filename = filename.split(".")[0]
         if with_timestamp:
             import time
-            filename += "_" + time.strftime('%Y%m%d-%H%M%S')
+            filename += "_" + time.strftime("%Y%m%d-%H%M%S")
         filename += ".yaml"
         filename = save_dir / filename
         with filename.open(mode="w") as file:
@@ -120,8 +121,7 @@ class Settings:
         :param config_filename: Config filename, .yaml files expected
         :type config_filename: str
         """
-        assert isinstance(config_filename, str) or isinstance(
-            config_filename, Path)
+        assert isinstance(config_filename, (Path, str))
         fname = Path(config_filename)
         assert fname.is_file()
         assert fname.suffix == ".yaml"

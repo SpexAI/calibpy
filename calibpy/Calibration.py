@@ -4,16 +4,15 @@
 :Sponsor: SpexAI GmbH
 """
 
-import cv2
-import numpy as np
 from pathlib import Path
+
+import cv2
 import matplotlib.pylab as plt
+import numpy as np
+
+from calibpy.Aruco import ArucoTarget, create_aruco_board, get_aruco_corners
 from calibpy.Camera import Camera
 from calibpy.Settings import Settings
-from calibpy.Aruco import (
-    ArucoTarget,
-    get_aruco_corners,
-    create_aruco_board)
 from calibpy.Stream import Stream
 
 
@@ -92,7 +91,7 @@ class Calibration:
         out = cv2.putText(out, f"{text}",
                           (20, 20), cv2.FONT_HERSHEY_SIMPLEX,
                           0.5, (0, 0, 255), 1, cv2.LINE_AA)
-        cv2.imshow('img', out)
+        cv2.imshow("img", out)
         cv2.waitKey(duration)
 
     def setup(self, settings: Settings):

@@ -1,6 +1,8 @@
 import unittest
-import numpy as np
 from pathlib import Path
+
+import numpy as np
+
 from calibpy.Serializer import Serializer
 
 

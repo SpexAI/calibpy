@@ -26,7 +26,7 @@ def get_aruco_dict(dict_key: str) -> int:
     elif dict_key == "DICT_7X7":
         return cv2.aruco.getPredefinedDictionary(cv2.aruco.DICT_7X7_1000)
     else:
-        raise IOError(
+        raise OSError(
             f"Unknown ARUCO_DICT {dict_key}, \
                 supported are [DICT_4X4, DICT_5X5, DICT_6X6, DICT_7X7]")
 
@@ -108,7 +108,7 @@ class ArucoTarget:
             cols: int,
             rows: int,
             square_size: float,
-            marker_size: float) -> 'ArucoTarget':
+            marker_size: float) -> "ArucoTarget":
         """_summary_
 
         :param dict_key: identifier string DICT_NXN N=[4,5,6,7]

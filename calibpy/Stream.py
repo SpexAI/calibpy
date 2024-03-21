@@ -1,12 +1,11 @@
 import os
+from abc import abstractmethod
+from pathlib import Path
+
 import cv2
 import Imath
 import numpy as np
 import OpenEXR as exr
-from pathlib import Path
-
-from abc import abstractmethod
-
 
 STREAM_FILETYPES = ["png", "jpg", "jpeg", "tif", "tiff", "exr"]
 
@@ -116,7 +115,7 @@ class FileStream(Stream):
         """
         assert Path(filename).is_file
         file = exr.InputFile(filename)
-        dw = file.header()['dataWindow']
+        dw = file.header()["dataWindow"]
         size = (dw.max.x - dw.min.x + 1, dw.max.y - dw.min.y + 1)
         Float_Type = Imath.PixelType(Imath.PixelType.FLOAT)
         channel_str = file.channel(channel_name, Float_Type)
@@ -144,7 +143,7 @@ class FileStream(Stream):
                         num = int(name_split[0])
                         return num
                     except ValueError:
-                        raise IOError(
+                        raise OSError(
                             "Unknown naming convention! Expecting: 000x,\
                             suffix_000x, 000x_prefix or suffix_000x_prefix")
 

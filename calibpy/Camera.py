@@ -5,6 +5,7 @@
 """
 
 import numpy as np
+
 try:
     from Serializer import Serializer
 except (ModuleNotFoundError, ImportError):
