@@ -10,3 +10,4 @@ opencv-contrib-python
 OpenEXR
 pytest
 PyYAML
+flake8

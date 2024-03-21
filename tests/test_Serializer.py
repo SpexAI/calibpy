@@ -38,7 +38,7 @@ class TestSerializerModule(unittest.TestCase):
         for ka, kb in zip(a.keys(), b.keys()):
             self.assertEqual(ka, kb)
             self.assertEqual(type(a[ka]), type(b[kb]))
-            if type(a[ka]) == np.ndarray:
+            if type(a[ka]) is np.ndarray:
                 np.testing.assert_array_equal(a[ka], b[kb])
             else:
                 self.assertEqual(a[ka], b[kb])

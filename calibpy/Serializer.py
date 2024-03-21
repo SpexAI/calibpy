@@ -6,7 +6,7 @@
 import json
 import yaml
 import pickle
-import tempfile
+# import tempfile
 import numpy as np
 from pathlib import Path
 
@@ -55,7 +55,7 @@ class Serializer:
 
     def load(self, filename: str):
         """
-        load attributes from file, supported are 
+        load attributes from file, supported are
         pickle .npy files, .yaml and .json files
 
         :param filename: filename
@@ -74,7 +74,7 @@ class Serializer:
 
     def write(self, filename: str, data: dict):
         """
-        write attributes to file, supported are 
+        write attributes to file, supported are
         pickle .npy files, .yaml and .json files
 
         :param filename: filename
@@ -179,7 +179,7 @@ class Serializer:
         out = {}
         for key, val in data.items():
             out_val_props = {}
-            if type(val) == np.ndarray:
+            if type(val) is np.ndarray:
                 out_val_props["value"] = val.tolist()
             else:
                 out_val_props["value"] = val
